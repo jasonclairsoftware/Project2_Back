@@ -10,7 +10,7 @@ public interface ItemDAO {
 			
 			//read
 			Item getItemById(int id); 
-			Item getItemByname(String name); 
+			Item getItemByName(String name); 
 			
 			//update
 			Item updateItem(Item item); 

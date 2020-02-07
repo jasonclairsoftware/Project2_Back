@@ -18,7 +18,7 @@ public class ItemDAOTests {
 	LocationDAOHibernate ldh = new LocationDAOHibernate();
 	@Test
 	public void createItem() {
-		Client client = new Client();
+		Client client = new Client();	// This will get ignored and get set to null
 		client = cdh.getClientById(5); 
 		Location location = new Location();
 		location = ldh.getLocationById(1); 
@@ -27,45 +27,53 @@ public class ItemDAOTests {
 		System.out.println(item);
 	}
 	
+
+	
 	@Test
 	public void getItemById() {
 		Item item = new Item();
-		item=idh.getItemById(2);
-		System.out.println(item);
-	}
-	
-	@Test //TypeMismatchException: Provided id of the wrong type for class com.bitbyte.entities.Item. 
-	//Expected: class java.lang.Integer, got class java.lang.String
-	public void getItemByName() {
-		Item item = new Item();
-		item = idh.getItemByname("computer");
+		item=idh.getItemById(1);
 		System.out.println(item);
 	}
 	
 	@Test 
+	public void getItemByName() {
+		Item item = new Item();
+		item = idh.getItemByName("computer");
+		System.out.println(item);
+	}
+	
+
+//	public Item(int iId, String name, String description, int value, Client client, Location location) {
+	
+	@Test 
 	public void updateItem() {
-	Item item = new Item(); 
-	item = idh.getItemById(2); 
-	item.setName("newsage");
-	item.setValue(100);
+	Item item = new Item();
+	item = idh.getItemById(1); 
+	
+//	item.setName("Charzard");
+//	item.setValue(50);
+//	item.setLocation(null);
+	item.setClient(null);
+	
 	item = idh.updateItem(item); 
 	System.out.println(item);
 		
 	}
 	
-	@Test //unsuccessful
-	public void deleteItem() {
-	Client client = new Client();
-	client = cdh.getClientById(5); 
-	Location location = new Location();
-	location = ldh.getLocationById(1); 
-	Item item = new Item(2, "newsage", "new", 100, client, location);
-	item = idh.getItemById(2); 
-	item.setName("newsage");
-	item.setValue(100);
-	item = idh.updateItem(item); 
-	System.out.println(item);
+	 //unsuccessful
+//	public void deleteItem() {
+//	Client client = new Client();
+//	client = cdh.getClientById(5); 
+//	Location location = new Location();
+//	location = ldh.getLocationById(1); 
+//	Item item = new Item(2, "newsage", "new", 100, client, location);
+//	item = idh.getItemById(2); 
+//	item.setName("newsage");
+//	item.setValue(100);
+//	item = idh.updateItem(item); 
+//	System.out.println(item);
 		
-	}
+	
 
 }

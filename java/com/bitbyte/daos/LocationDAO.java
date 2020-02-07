@@ -11,13 +11,13 @@ public interface LocationDAO {
 			
 			//read
 			Location getLocationById(int id); 
-			Location getLocationByGeoLocation(String geolocation); 
+//			Location getLocationByGeoLocation(String geolocation); 
 			
 			//update
 			Location updateLocation(Location location); 
 			
 			//delete
-			 boolean deleteLocation(Location location); 
+//			 boolean deleteLocation(Location location); 
 			
 	
 }
