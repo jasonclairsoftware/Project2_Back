@@ -16,7 +16,7 @@ public class ClientDAOTests {
 	
 	@Test
 	public void createClient() {
-		Client client = new Client(0, "tester", "testerpass", false);
+		Client client = new Client(0, "tester", "testerpass", false, 200);
 		client = cdh.createClient(client); 
 		System.out.println(client);
 	}
