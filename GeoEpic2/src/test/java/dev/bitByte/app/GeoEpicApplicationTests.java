@@ -27,7 +27,7 @@ class GeoEpicApplicationTests {
 	}
 	
 	@Test
-	//NOT WORKING 
+	//WORKING
 	void login() {
 		Client c = ges.login("jason", "jasonpass");
 		System.out.println("Result is " + c);

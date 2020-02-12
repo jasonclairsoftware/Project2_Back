@@ -3,6 +3,10 @@ package dev.bitByte.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -13,11 +17,15 @@ import dev.bitByte.entities.Location;
 import dev.bitByte.repositories.ClientRepo;
 import dev.bitByte.repositories.ItemRepo;
 import dev.bitByte.repositories.LocationRepo;
+import dev.bitByte.utils.HibernateUtil;
 
 @Component
 @Service
 public class GeoEpicServicesImpl implements GeoEpicServices{
 
+	
+	private SessionFactory sf = HibernateUtil.getSessionFactory();
+	
 	@Autowired
 	ClientRepo cr;
 	
@@ -29,20 +37,21 @@ public class GeoEpicServicesImpl implements GeoEpicServices{
 	
 	@Override
 	public Client login(String username, String password) {
-		Client c = cr.findByUsername(username);
-		System.out.println(c);
-		System.out.println(c.getPassword());
-		System.out.println(password);
-		
-		if (c.getPassword() != password) {
+		Session sess = sf.openSession();
+		Criteria crit = sess.createCriteria(Client.class);
+		crit.add(Restrictions.like("username", username));
+		crit.add(Restrictions.like("password", password));
+		List<Client> user = crit.list();
+		sess.close();
+		if (user.isEmpty()) {
 			return null;
-		}else {
-			return c; 
+		}
+		return user.get(0);
 		}
 	
 	
 	
-	}
+	
 //		if (c.getUsername().equals(username)) {
 //			System.out.println("Username Matched!");
 //		}
