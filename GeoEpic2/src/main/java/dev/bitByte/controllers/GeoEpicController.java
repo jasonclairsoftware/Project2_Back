@@ -23,7 +23,7 @@ public class GeoEpicController {
 	@Autowired
 	GeoEpicServices ges;
 	
-	//UNTESTED 
+	//SUCCESSFUL
 //	public Client login(String username, String password);
 	@ResponseBody	//Spring will automatically turn objects onto JSONS
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
