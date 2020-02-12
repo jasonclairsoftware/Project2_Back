@@ -16,8 +16,8 @@ public interface ItemDAO {
 			Item updateItem(Item item); 
 			
 			//delete
-			 boolean deleteItem(Item item); 
-			
+//			 boolean deleteItem(Item item); 
+//			
 
 
 

@@ -38,9 +38,9 @@ public class LocationDAOTests {
 	@Test
 	public void updateLocation() {
 		Location location = new Location();
-		location = ldh.getLocationById(5); 
-		location.setClue("delete me soon");
-		location.setGeoLocation("478932489743879234");
+		location = ldh.getLocationById(4); 
+		location.setClue("empty");
+		location.setGeoLocation("39.6320, -79.9538");
 		location = ldh.updateLocation(location);
 		System.out.println(location);
 	}

@@ -61,12 +61,12 @@ public class ItemDAOHibernate implements ItemDAO {
 	}
 
 	//unsuccessful 
-	public boolean deleteItem(Item item) {
-		Session sess = sf.openSession();
-		sess.beginTransaction(); 
-		sess.update(item);
-		sess.getTransaction().commit(); 
-		sess.close();
-		return true;	}
+//	public boolean deleteItem(Item item) {
+//		Session sess = sf.openSession();
+//		sess.beginTransaction(); 
+//		sess.update(item);
+//		sess.getTransaction().commit(); 
+//		sess.close();
+//		return true;	}
 
 }
