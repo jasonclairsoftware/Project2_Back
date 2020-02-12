@@ -9,11 +9,14 @@ import dev.bitByte.entities.Location;
 public interface GeoEpicServices {
 
 	
+	//CLIENTS
 	public Client login(String username, String password);
 	public Client createClient(String username, String password); // only to create clients, not managers
 	public List<Client> getAllClients();
+	public Client getClientById(int id); 
 	
 	
+	//ITEMS
 	public Item createItem(Item item);
 	public Item getItemById(int id);
 	public List<Item> getItemsForLocation(int location);
@@ -23,10 +26,11 @@ public interface GeoEpicServices {
 	public Item deleteItem(Item item);
 	
 	
+	//LOCATIONS
 	public Location createLocation(Location location);
-	public String getLocationById(int id);
+	public String getGeoLocationById(int id);
 	public Location updateLocation(Location location); // can use for changing the clue, and for moving the location
-	
+	public Location getLocationById(int id); 
 	
 	
 }

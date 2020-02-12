@@ -1,5 +1,6 @@
 package dev.bitByte.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,37 +84,57 @@ public class GeoEpicServicesImpl implements GeoEpicServices{
 		return i;
 	}
 
+	
+	
+	
 	@Override
 	public List<Item> getItemsForLocation(int location) {//return list of items, where l_id == location.getID
 //Maybe change later, if better implementation found
 		
 		List<Item> allItems = this.getAllItems();
-		List<Item> Litems = null;
-		
+		List<Item> Litems = new ArrayList<Item>();
+
 		for(Item i:allItems) {
-			if (i.getLocation().getlId() == location) {
-				Litems.add(i);
+			if(i.getLocation() != null) {
+				if (i.getLocation().getlId() == location) {
+					Litems.add(i);
+				}
 			}
+
 		}
-		
+
 		return Litems;
 	}
 
+	
+	
+	
+	
+	
 	@Override
 	public List<Item> getItemsForClient(Client client) {
 //Maybe change later, if better implementation found
 		
 		List<Item> allItems = this.getAllItems();
-		List<Item> Citems = null;
+		List<Item> Citems = new ArrayList<Item>();
 				
 		for(Item i:allItems) {
-			if (i.getClient().getcId() == client.getcId()) {
-				Citems.add(i);
+			if(i.getClient() != null) {
+				if (i.getClient().getcId() == client.getcId()) {
+					Citems.add(i);
+				}
+				
 			}
+			
 		}		
 		return Citems;
 	}
 
+	
+	
+	
+	
+	
 	@Override
 	public Item updateItem(Item item) {
 		ir.save(item);
@@ -138,7 +159,7 @@ public class GeoEpicServicesImpl implements GeoEpicServices{
 	}
 
 	@Override
-	public String getLocationById(int id) {
+	public String getGeoLocationById(int id) {
 		Location L = lr.findById(id).get();
 
 		return L.getGeoLocation();
@@ -147,6 +168,20 @@ public class GeoEpicServicesImpl implements GeoEpicServices{
 	@Override
 	public Location updateLocation(Location location) {
 		lr.save(location);
+		return location;
+	}
+
+
+	@Override
+	public Client getClientById(int id) {
+		Client c = cr.findById(id).get(); 
+		return c;
+	}
+
+
+	@Override
+	public Location getLocationById(int id) {
+		Location location = lr.findById(id).get();
 		return location;
 	}
 
